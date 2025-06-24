@@ -54,6 +54,7 @@ tasks.named('sonar').configure {
 sonar {
     properties {
         property "sonar.projectKey", "cbpersonal_flowershop-be"
+        property "sonar.organization", "cbpersonal"
         property "sonar.host.url", "https://sonarcloud.io"
         property "sonar.sources", "src/main/java/flowerwebshop/liora/service"
         property "sonar.tests", "src/test/java"
