@@ -2,10 +2,8 @@ package flowerwebshop.liora.controller;
 
 import flowerwebshop.liora.controller.converter.ProductDtoConverter;
 import flowerwebshop.liora.controller.dto.*;
-import flowerwebshop.liora.domain.Product;
 import flowerwebshop.liora.service.product.*;
 import lombok.AllArgsConstructor;
-import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

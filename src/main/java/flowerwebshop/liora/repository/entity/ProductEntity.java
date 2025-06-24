@@ -1,7 +1,5 @@
 package flowerwebshop.liora.repository.entity;
 
-
-import flowerwebshop.liora.domain.enums.ProductCategory;
 import jakarta.persistence.*;
 import lombok.*;
 import jakarta.validation.constraints.NotNull;
