@@ -40,10 +40,8 @@ jobs:
       - name: Build and run tests
         run: ./gradlew clean test --info
 
-      - name: SonarCloud Scan
+      - name: Run SonarCloud analysis
         if: github.ref == 'refs/heads/main'
-        uses: SonarSource/sonarcloud-github-action@v2
-        with:
-          projectBaseDir: .
+        run: ./gradlew sonarqube
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
