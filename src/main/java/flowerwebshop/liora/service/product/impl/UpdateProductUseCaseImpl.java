@@ -30,8 +30,10 @@ public class UpdateProductUseCaseImpl implements UpdateProductUseCase {
         entityToUpdate.setName(product.getName());
         entityToUpdate.setDescription(product.getDescription());
         entityToUpdate.setPrice(product.getPrice());
-        entityToUpdate.setCategory(product.getCategory().toString());
-        entityToUpdate.setActive(product.isActive());
+        entityToUpdate.setFlower_category(product.getFlower_category());
+        entityToUpdate.setProduct_category(product.getProduct_category().toString());
+        entityToUpdate.setStock(product.getStock());
+        entityToUpdate.setMeaning(product.getMeaning());
 
         ProductEntity savedEntity = productRepository.save(entityToUpdate);
 

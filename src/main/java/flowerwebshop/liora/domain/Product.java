@@ -14,6 +14,9 @@ public class Product {
     private String description;
     private double price;
     private Date date_created;
-    private ProductCategory category;
-    private boolean active;
+    private String flower_category;
+    private ProductCategory product_category;
+    private boolean archived;
+    private String meaning;
+    private int stock;
 }

@@ -40,8 +40,11 @@ class UpdateProductUseCaseImplTest {
                 .name("Old Name")
                 .description("Old Desc")
                 .price(20.0)
-                .category(ProductCategory.BOUQUET.name())
-                .active(true)
+                .product_category(String.valueOf(ProductCategory.BOUQUET))
+                .flower_category("Lavender")
+                .archived(false)
+                .stock(23)
+                .meaning("Love, unforgettable")
                 .date_created(new Date())
                 .build();
 
@@ -50,8 +53,11 @@ class UpdateProductUseCaseImplTest {
                 .name("New Name")
                 .description("New Desc")
                 .price(30.0)
-                .category(ProductCategory.ACCESSORY)
-                .active(false)
+                .product_category(ProductCategory.BOUQUET)
+                .flower_category("Lavender")
+                .archived(false)
+                .stock(23)
+                .meaning("Love, unforgettable")
                 .date_created(new Date())
                 .build();
 
@@ -60,8 +66,11 @@ class UpdateProductUseCaseImplTest {
                 .name("New Name")
                 .description("New Desc")
                 .price(30.0)
-                .category(ProductCategory.ACCESSORY.name())
-                .active(false)
+                .product_category(String.valueOf(ProductCategory.BOUQUET))
+                .flower_category("Lavender")
+                .archived(false)
+                .stock(23)
+                .meaning("Love, unforgettable")
                 .date_created(existingEntity.getDate_created())
                 .build();
 
@@ -74,8 +83,8 @@ class UpdateProductUseCaseImplTest {
         assertEquals(updatedProduct.getName(), result.getName());
         assertEquals(updatedProduct.getDescription(), result.getDescription());
         assertEquals(updatedProduct.getPrice(), result.getPrice());
-        assertEquals(updatedProduct.getCategory(), result.getCategory());
-        assertFalse(result.isActive());
+        assertEquals(updatedProduct.getProduct_category(), result.getProduct_category());
+        assertFalse(result.isArchived());
 
         verify(productRepository).findById(productId);
         verify(productRepository).save(any(ProductEntity.class));
@@ -89,8 +98,11 @@ class UpdateProductUseCaseImplTest {
                 .name("Doesn't matter")
                 .description("Still doesn't matter")
                 .price(10.0)
-                .category(ProductCategory.BOUQUET)
-                .active(true)
+                .product_category(ProductCategory.BOUQUET)
+                .flower_category("Lavender")
+                .archived(false)
+                .stock(23)
+                .meaning("Love, unforgettable")
                 .build();
 
         when(productRepository.findById(999)).thenReturn(Optional.empty());

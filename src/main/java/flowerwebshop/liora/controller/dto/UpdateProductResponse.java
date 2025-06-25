@@ -13,7 +13,10 @@ public class UpdateProductResponse {
     private String name;
     private String description;
     private double price;
-    private ProductCategory category;
-    private Date date;
-    private boolean active;
+    private Date date_created;
+    private ProductCategory product_category;
+    private String flower_category;
+    private boolean archived;
+    private String meaning;
+    private int stock;
 }
