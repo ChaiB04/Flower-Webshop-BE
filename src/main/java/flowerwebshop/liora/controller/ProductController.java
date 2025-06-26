@@ -64,7 +64,6 @@ public class ProductController {
     public ResponseEntity<GetAllProductsResponse> getAllProducts(@RequestParam(defaultValue = "0") int page,
                                                                  @RequestParam(defaultValue = "10") int size) {
         try{
-            System.out.println("getAllProducts");
             return ResponseEntity.ok().body(GetAllProductsResponse.builder().products(getAllProductsUseCase.getAllProducts(page, size)).build());
         }
         catch (Exception e){

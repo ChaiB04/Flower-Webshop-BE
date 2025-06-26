@@ -4,6 +4,8 @@ import flowerwebshop.liora.domain.enums.ProductCategory;
 import lombok.Builder;
 import lombok.Data;
 
+import java.util.Date;
+
 @Data
 @Builder
 public class UpdateProductRequest {
@@ -11,6 +13,10 @@ public class UpdateProductRequest {
     private String name;
     private String description;
     private double price;
-    private ProductCategory category;
-    private boolean active;
+    private Date date_created;
+    private ProductCategory product_category;
+    private String flower_category;
+    private boolean archived;
+    private String meaning;
+    private int stock;
 }

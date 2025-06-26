@@ -36,13 +36,13 @@ class GetAllProductsUseCaseImplTest {
         ProductEntity entity1 = ProductEntity.builder()
                 .id(1)
                 .name("Product 1")
-                .category(ProductCategory.BOUQUET.name())
+                .product_category(ProductCategory.BOUQUET.name())
                 .build();
 
         ProductEntity entity2 = ProductEntity.builder()
                 .id(2)
                 .name("Product 2")
-                .category(ProductCategory.BOUQUET.name())
+                .product_category(ProductCategory.BOUQUET.name())
                 .build();
 
 

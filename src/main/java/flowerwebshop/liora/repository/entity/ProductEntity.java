@@ -21,7 +21,7 @@ public class ProductEntity {
     int id;
 
     @NotNull
-    @Column(name = "date")
+    @Column(name = "name")
     String name;
 
     @NotNull
@@ -37,10 +37,23 @@ public class ProductEntity {
     Date date_created;
 
     @NotNull
-    @Column(name = "category")
-    String category;
+    @Column(name = "flower_category")
+    String flower_category;
 
     @NotNull
-    @Column(name = "active")
-    boolean active;
+    @Column(name = "product_category")
+    String product_category;
+
+    @NotNull
+    @Column(name = "archived")
+    boolean archived;
+
+    @NotNull
+    @Column(name = "meaning")
+    String meaning;
+
+    @NotNull
+    @Column(name = "stock")
+    int stock;
 }
+

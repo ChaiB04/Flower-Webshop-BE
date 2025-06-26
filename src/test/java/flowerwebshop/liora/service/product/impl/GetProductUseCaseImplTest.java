@@ -32,11 +32,14 @@ class GetProductUseCaseImplTest {
         ProductEntity entity = ProductEntity.builder()
                 .id(productId)
                 .name("Tulip Garden")
-                .category(ProductCategory.BOUQUET.name())
                 .description("A field of tulips.")
                 .price(24.99)
                 .date_created(new Date())
-                .active(true)
+                .product_category(String.valueOf(ProductCategory.BOUQUET))
+                .flower_category("Lavender")
+                .archived(false)
+                .stock(23)
+                .meaning("Love, unforgettable")
                 .build();
 
         when(productRepository.findById(productId)).thenReturn(Optional.of(entity));

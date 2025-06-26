@@ -14,8 +14,11 @@ public class ProductDtoConverter {
                 .name(request.getName())
                 .description(request.getDescription())
                 .price(request.getPrice())
-                .category(request.getCategory())
-                .active(request.isActive())
+                .meaning(request.getMeaning())
+                .stock(request.getStock())
+                .product_category(request.getProduct_category())
+                .archived(request.isArchived())
+                .flower_category(request.getFlower_category())
                 .build();
     }
 
@@ -25,8 +28,12 @@ public class ProductDtoConverter {
                 .name(request.getName())
                 .description(request.getDescription())
                 .price(request.getPrice())
-                .category(request.getCategory())
-                .active(request.isActive())
+                .meaning(request.getMeaning())
+                .stock(request.getStock())
+                .date_created(request.getDate_created())
+                .product_category(request.getProduct_category())
+                .archived(request.isArchived())
+                .flower_category(request.getFlower_category())
                 .build();
     }
 
@@ -36,9 +43,12 @@ public class ProductDtoConverter {
                 .name(product.getName())
                 .description(product.getDescription())
                 .price(product.getPrice())
-                .date(product.getDate_created())
-                .category(product.getCategory())
-                .active(product.isActive())
+                .meaning(product.getMeaning())
+                .stock(product.getStock())
+                .date_created(product.getDate_created())
+                .product_category(product.getProduct_category())
+                .archived(product.isArchived())
+                .flower_category(product.getFlower_category())
                 .build();
     }
 
@@ -48,9 +58,12 @@ public class ProductDtoConverter {
                 .name(product.getName())
                 .description(product.getDescription())
                 .price(product.getPrice())
-                .category(product.getCategory())
+                .meaning(product.getMeaning())
+                .stock(product.getStock())
                 .date_created(product.getDate_created())
-                .active(product.isActive())
+                .product_category(product.getProduct_category())
+                .archived(product.isArchived())
+                .flower_category(product.getFlower_category())
                 .build();
     }
 }

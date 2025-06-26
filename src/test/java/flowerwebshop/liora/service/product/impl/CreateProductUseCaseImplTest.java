@@ -38,8 +38,11 @@ class CreateProductUseCaseImplTest {
                 .description("A soothing blend of fresh lavender and wildflowers.")
                 .price(34.99)
                 .date_created(now)
-                .category(ProductCategory.BOUQUET)
-                .active(true)
+                .product_category(ProductCategory.BOUQUET)
+                .flower_category("Lavender")
+                .archived(false)
+                .stock(23)
+                .meaning("Love, unforgettable")
                 .build();
 
 
