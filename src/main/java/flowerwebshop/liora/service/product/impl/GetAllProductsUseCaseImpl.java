@@ -19,7 +19,7 @@ public class GetAllProductsUseCaseImpl implements GetAllProductsUseCase {
 
     public Page<Product> getAllProducts(int page, int size) {
 
-        Pageable pageable = PageRequest.of(page - 1, size, Sort.by(Sort.Direction.ASC, "id"));
+        Pageable pageable = PageRequest.of(page - 1, size, Sort.by(Sort.Direction.DESC, "id"));
 
         return productRepository.findAll(pageable).map(ProductEntityConverter::convertProductEntityToProduct);
     }
