@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 
 import java.util.Date;
+import java.util.List;
 
 @Builder
 @Data
@@ -17,6 +18,7 @@ public class UpdateProductResponse {
     private ProductCategory product_category;
     private String flower_category;
     private boolean archived;
+    private List<String> photos;
     private String meaning;
     private int stock;
 }

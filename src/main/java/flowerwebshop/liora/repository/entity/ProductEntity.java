@@ -6,6 +6,7 @@ import jakarta.validation.constraints.NotNull;
 
 
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "product")
@@ -52,8 +53,12 @@ public class ProductEntity {
     @Column(name = "meaning")
     String meaning;
 
+
     @NotNull
     @Column(name = "stock")
     int stock;
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "product", fetch = FetchType.EAGER)
+    private List<PictureEntity> pictures;
 }
 

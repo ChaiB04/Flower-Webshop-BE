@@ -3,6 +3,9 @@ package flowerwebshop.liora.controller.converter;
 import flowerwebshop.liora.controller.dto.*;
 import flowerwebshop.liora.domain.Product;
 
+import java.util.Base64;
+import java.util.List;
+
 public class ProductDtoConverter {
 
     public static CreateProductResponse domainToCreateProductResponse(int id) {
@@ -10,6 +13,11 @@ public class ProductDtoConverter {
     }
 
     public static Product createProductDTOToProduct(CreateProductRequest request) {
+        List<byte[]> decodedPhotos = request.getPhotos().stream()
+                .map(photoBase64 -> Base64.getDecoder().decode(photoBase64))
+                .toList();
+
+
         return Product.builder()
                 .name(request.getName())
                 .description(request.getDescription())
@@ -18,11 +26,16 @@ public class ProductDtoConverter {
                 .stock(request.getStock())
                 .product_category(request.getProduct_category())
                 .archived(request.isArchived())
+                .photos(decodedPhotos)
                 .flower_category(request.getFlower_category())
                 .build();
     }
 
     public static Product updateProductDTOToProduct(UpdateProductRequest request) {
+        List<byte[]> decodedPhotos = request.getPhotos().stream()
+                .map(photoBase64 -> Base64.getDecoder().decode(photoBase64))
+                .toList();
+
         return Product.builder()
                 .id(request.getId())
                 .name(request.getName())
@@ -33,11 +46,17 @@ public class ProductDtoConverter {
                 .date_created(request.getDate_created())
                 .product_category(request.getProduct_category())
                 .archived(request.isArchived())
+                .photos(decodedPhotos)
                 .flower_category(request.getFlower_category())
                 .build();
     }
 
     public static UpdateProductResponse productToUpdateProductDTO(Product product) {
+        List<String> encodedPhotos = product.getPhotos().stream()
+                .map(photo -> Base64.getEncoder().encodeToString(photo))
+                .toList();
+
+
         return UpdateProductResponse.builder()
                 .id(product.getId())
                 .name(product.getName())
@@ -45,6 +64,7 @@ public class ProductDtoConverter {
                 .price(product.getPrice())
                 .meaning(product.getMeaning())
                 .stock(product.getStock())
+                .photos(encodedPhotos)
                 .date_created(product.getDate_created())
                 .product_category(product.getProduct_category())
                 .archived(product.isArchived())
@@ -53,6 +73,10 @@ public class ProductDtoConverter {
     }
 
     public static GetProductResponse productToGetProductDTO(Product product) {
+        List<String> encodedPhotos = product.getPhotos().stream()
+                .map(photo -> Base64.getEncoder().encodeToString(photo))
+                .toList();
+
         return GetProductResponse.builder()
                 .id(product.getId())
                 .name(product.getName())
@@ -60,6 +84,7 @@ public class ProductDtoConverter {
                 .price(product.getPrice())
                 .meaning(product.getMeaning())
                 .stock(product.getStock())
+                .photos(encodedPhotos)
                 .date_created(product.getDate_created())
                 .product_category(product.getProduct_category())
                 .archived(product.isArchived())

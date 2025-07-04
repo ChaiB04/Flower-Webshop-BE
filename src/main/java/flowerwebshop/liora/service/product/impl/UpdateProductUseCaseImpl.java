@@ -3,6 +3,7 @@ package flowerwebshop.liora.service.product.impl;
 import flowerwebshop.liora.domain.Product;
 import flowerwebshop.liora.repository.ProductRepository;
 import flowerwebshop.liora.repository.converter.ProductEntityConverter;
+import flowerwebshop.liora.repository.entity.PictureEntity;
 import flowerwebshop.liora.repository.entity.ProductEntity;
 import flowerwebshop.liora.service.exception.ProductNotFoundException;
 import flowerwebshop.liora.service.product.UpdateProductUseCase;
@@ -27,6 +28,7 @@ public class UpdateProductUseCaseImpl implements UpdateProductUseCase {
 
         ProductEntity entityToUpdate = optionalEntity.get();
 
+        // Update basic fields
         entityToUpdate.setName(product.getName());
         entityToUpdate.setDescription(product.getDescription());
         entityToUpdate.setPrice(product.getPrice());
@@ -36,8 +38,22 @@ public class UpdateProductUseCaseImpl implements UpdateProductUseCase {
         entityToUpdate.setMeaning(product.getMeaning());
         entityToUpdate.setArchived(product.isArchived());
 
+        entityToUpdate.getPictures().clear();
+
+        // 📷 Add new pictures (converted from base64 strings in product.getPhotos())
+        for (byte[] base64Photo : product.getPhotos()) {
+           PictureEntity picture = PictureEntity.builder()
+                    .picture(base64Photo)
+                    .product(entityToUpdate)
+                    .build();
+
+            entityToUpdate.getPictures().add(picture);
+        }
+
+        // 💾 Save updated product with new pictures
         ProductEntity savedEntity = productRepository.save(entityToUpdate);
 
         return ProductEntityConverter.convertProductEntityToProduct(savedEntity);
     }
+
 }
