@@ -31,7 +31,7 @@ class GetAllProductsUseCaseImplTest {
         int page = 1;
         int size = 2;
 
-        Pageable pageable = PageRequest.of(0, size, Sort.by(Sort.Direction.ASC, "id"));
+        Pageable pageable = PageRequest.of(0, size, Sort.by(Sort.Direction.DESC, "id"));
 
         ProductEntity entity1 = ProductEntity.builder()
                 .id(1)
