@@ -1,6 +1,6 @@
 # 🌸 Flower Webshop - Backend
 
-This is the backend service for the **Flower Webshop**, built with **Java 17**, **Spring Boot**, and **MySQL**. It provides RESTful APIs for managing products, orders, users, and authentication.
+This is the backend service for the **Flower Webshop**, built with **Java 17**, **Spring Boot**, and **PostgreSQL**. It provides RESTful APIs for managing products, orders, users, and authentication.
 
 ---
 
@@ -9,11 +9,12 @@ This is the backend service for the **Flower Webshop**, built with **Java 17**, 
 - Java 17
 - Spring Boot
 - Spring Data JPA (Hibernate)
-- MySQL (PlanetScale-compatible)
+- PostgreSQL (Neon.tech)
 - Spring Security + OAuth2
 - JUnit 5
 - Gradle
 - GitHub Actions CI
+- Backend Hosting on Koyeb
 
 ---
 
@@ -25,6 +26,7 @@ This is the backend service for the **Flower Webshop**, built with **Java 17**, 
 - 📊 **Test Coverage Reports**: Generated with JaCoCo.
 - 📡 **Real-time Notifications** *(Planned)*: WebSocket-based updates on new products.
 - 🧭 **Admin Dashboard** *(Planned)*: Summary of product stats and health metrics.
+- 🌐 **Fully deployed** using GitHub integration + CI/CD
 
 ---
 
