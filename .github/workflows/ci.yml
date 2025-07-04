@@ -38,6 +38,8 @@ jobs:
             ${{ runner.os }}-gradle-
 
       - name: Build and run tests
+        env:
+          DB_CONNECTION_STRING: ${{ secrets.DB_CONNECTION_STRING }}
         run: ./gradlew clean test --info
 
       - name: Run SonarCloud analysis
