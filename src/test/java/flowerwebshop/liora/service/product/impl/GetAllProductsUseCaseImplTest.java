@@ -11,6 +11,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.data.domain.*;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -30,18 +31,19 @@ class GetAllProductsUseCaseImplTest {
     void getAllProducts_ReturnsPagedProducts() {
         int page = 1;
         int size = 2;
-
         Pageable pageable = PageRequest.of(0, size, Sort.by(Sort.Direction.DESC, "id"));
 
         ProductEntity entity1 = ProductEntity.builder()
                 .id(1)
                 .name("Product 1")
+                .pictures(new ArrayList<>())
                 .product_category(ProductCategory.BOUQUET.name())
                 .build();
 
         ProductEntity entity2 = ProductEntity.builder()
                 .id(2)
                 .name("Product 2")
+                .pictures(new ArrayList<>())
                 .product_category(ProductCategory.BOUQUET.name())
                 .build();
 

@@ -40,7 +40,7 @@ public class UpdateProductUseCaseImpl implements UpdateProductUseCase {
 
         entityToUpdate.getPictures().clear();
 
-        // 📷 Add new pictures (converted from base64 strings in product.getPhotos())
+        // Add new pictures (converted from base64 strings in product.getPhotos())
         for (byte[] base64Photo : product.getPhotos()) {
            PictureEntity picture = PictureEntity.builder()
                     .picture(base64Photo)
