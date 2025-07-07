@@ -17,7 +17,6 @@ public class ProductDtoConverter {
                 .map(photoBase64 -> Base64.getDecoder().decode(photoBase64))
                 .toList();
 
-
         return Product.builder()
                 .name(request.getName())
                 .description(request.getDescription())
