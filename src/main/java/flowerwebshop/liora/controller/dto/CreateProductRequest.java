@@ -2,9 +2,10 @@ package flowerwebshop.liora.controller.dto;
 
 import flowerwebshop.liora.domain.enums.ProductCategory;
 import jakarta.validation.constraints.NotNull;
-import jakarta.websocket.OnError;
 import lombok.Builder;
 import lombok.Data;
+
+import java.util.List;
 
 @Data
 @Builder
@@ -25,6 +26,8 @@ public class CreateProductRequest {
     @NotNull
     private String flower_category;
     private boolean archived;
+
+    private List<String> photos;
 
     @NotNull
     private String meaning;

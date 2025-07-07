@@ -3,6 +3,7 @@ package flowerwebshop.liora.service.product.impl;
 import flowerwebshop.liora.domain.Product;
 import flowerwebshop.liora.domain.enums.ProductCategory;
 import flowerwebshop.liora.repository.ProductRepository;
+import flowerwebshop.liora.repository.entity.PictureEntity;
 import flowerwebshop.liora.repository.entity.ProductEntity;
 import flowerwebshop.liora.service.exception.ProductNotFoundException;
 import org.junit.jupiter.api.Test;
@@ -11,7 +12,9 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -34,6 +37,7 @@ class UpdateProductUseCaseImplTest {
     void updateProduct_ProductExists_UpdatesAndReturnsProduct() {
 
         int productId = 1;
+        byte[] photo = new byte[]{1, 2, 3};
 
         ProductEntity existingEntity = ProductEntity.builder()
                 .id(productId)
@@ -46,7 +50,16 @@ class UpdateProductUseCaseImplTest {
                 .stock(23)
                 .meaning("Love, unforgettable")
                 .date_created(new Date())
+                .pictures(new ArrayList<>())
                 .build();
+
+        PictureEntity pictureEntity = PictureEntity.builder()
+                .id(1)
+                .picture(photo)
+                .product(existingEntity)
+                .build();
+
+        existingEntity.setPictures(new ArrayList<>(List.of(pictureEntity)));
 
         Product updatedProduct = Product.builder()
                 .id(productId)
@@ -55,6 +68,7 @@ class UpdateProductUseCaseImplTest {
                 .price(30.0)
                 .product_category(ProductCategory.BOUQUET)
                 .flower_category("Lavender")
+                .photos(new ArrayList<>(List.of(photo)))
                 .archived(false)
                 .stock(23)
                 .meaning("Love, unforgettable")
@@ -68,13 +82,16 @@ class UpdateProductUseCaseImplTest {
                 .price(30.0)
                 .product_category(String.valueOf(ProductCategory.BOUQUET))
                 .flower_category("Lavender")
+                .pictures(new ArrayList<>(List.of(pictureEntity)))
                 .archived(false)
                 .stock(23)
                 .meaning("Love, unforgettable")
                 .date_created(existingEntity.getDate_created())
                 .build();
 
-        when(productRepository.findById(productId)).thenReturn(Optional.of(existingEntity));
+        when(productRepository.findById(existingEntity.getId()))
+                .thenReturn(Optional.of(existingEntity));
+
         when(productRepository.save(any(ProductEntity.class))).thenReturn(updatedEntity);
 
         Product result = updateProductUseCase.update(updatedProduct);
@@ -89,6 +106,7 @@ class UpdateProductUseCaseImplTest {
         verify(productRepository).findById(productId);
         verify(productRepository).save(any(ProductEntity.class));
     }
+
 
     @Test
     void updateProduct_ProductDoesNotExist_ThrowsException() {

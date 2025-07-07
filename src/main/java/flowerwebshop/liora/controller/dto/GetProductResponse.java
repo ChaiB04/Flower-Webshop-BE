@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 
 import java.util.Date;
+import java.util.List;
 
 @Builder
 @Data
@@ -15,6 +16,7 @@ public class GetProductResponse {
     private double price;
     private Date date_created;
     private String flower_category;
+    private List<String> photos;
     private ProductCategory product_category;
     private boolean archived;
     private String meaning;

@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 
 import java.util.Date;
+import java.util.List;
 
 @Builder
 @Data
@@ -18,5 +19,6 @@ public class Product {
     private ProductCategory product_category;
     private boolean archived;
     private String meaning;
+    private List<byte[]> photos;
     private int stock;
 }

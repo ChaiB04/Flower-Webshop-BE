@@ -11,6 +11,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Optional;
 
@@ -33,6 +34,7 @@ class GetProductUseCaseImplTest {
                 .id(productId)
                 .name("Tulip Garden")
                 .description("A field of tulips.")
+                .pictures(new ArrayList<>())
                 .price(24.99)
                 .date_created(new Date())
                 .product_category(String.valueOf(ProductCategory.BOUQUET))

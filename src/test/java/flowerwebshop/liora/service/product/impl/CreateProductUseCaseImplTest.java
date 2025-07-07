@@ -11,7 +11,9 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
@@ -31,11 +33,13 @@ class CreateProductUseCaseImplTest {
     @Test
     void createProduct_Successful() {
         Date now = new Date();
+        List<byte[]> photo = new ArrayList<>();
 
         Product product = Product.builder()
                 .id(1)
                 .name("Lavender Bliss Bouquet")
                 .description("A soothing blend of fresh lavender and wildflowers.")
+                .photos(photo)
                 .price(34.99)
                 .date_created(now)
                 .product_category(ProductCategory.BOUQUET)
